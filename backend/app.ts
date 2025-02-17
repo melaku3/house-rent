@@ -4,6 +4,9 @@ import morgan from 'morgan';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
+// import routes
+import authRoute from './routes/authRoute';
+
 // Create Express server
 const app = express();
 
@@ -14,10 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
+// api endpoints
+app.use('/api/auth', authRoute);
 
 // error handler
 app.use(errorHandler);
