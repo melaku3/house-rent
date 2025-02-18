@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 
 // import routes
 import authRoute from './routes/authRoute';
-
+import userRoute from './routes/userRoute';
 // Create Express server
 const app = express();
 
@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // api endpoints
 app.use('/api/auth', authRoute);
+app.use('/api/users', userRoute);
 
 // error handler
 app.use(errorHandler);

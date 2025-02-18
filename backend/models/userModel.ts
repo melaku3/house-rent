@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
-import { roleType } from "../utils/validationSchema";
 
 const userSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, default: 'renter' as roleType },
+    role: { type: String, enum: ['renter', 'owner', 'admin'], default: 'renter', required: true },
     profileInfo: {
         name: { type: String },
         avatar: { type: String },

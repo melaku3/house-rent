@@ -21,3 +21,14 @@ export const protect = expressAsyncHandler(async (req: Request, res: Response, n
         throw new Error('Not authorized, token failed');
     }
 });
+
+// Middleware to restrict routes to certain roles
+export const restrictTo = (...roles: string[]) => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        if (!roles.includes(req.body.user.role)) {
+            res.status(403);
+            throw new Error('You do not have permission to perform this action');
+        }
+        next();
+    };
+};
