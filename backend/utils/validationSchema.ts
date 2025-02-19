@@ -18,3 +18,27 @@ export const updateUserSchema = z.object({
     email: z.string().email().toLowerCase().optional(),
     role: roleSchema.optional(),
 });
+
+export const propertySchema = z.object({
+    title: z.string(),
+    numberOfRooms: z.number(),
+    description: z.string(),
+    location: z.string(),
+    price: z.number(),
+    amenities: z.array(z.string()).optional(),
+    image: z.array(z.string()).min(1),
+    owner: z.string().length(24),
+    available: z.boolean().optional()
+});
+
+export const propertyUpdateSchema = z.object({
+    propertyId: z.string().length(24),
+    title: z.string().optional(),
+    numberOfRooms: z.number().optional(),
+    description: z.string().optional(),
+    location: z.string().optional(),
+    price: z.number().optional(),
+    amenities: z.array(z.string()).optional(),
+    image: z.array(z.string()).optional(),
+    available: z.boolean().optional()
+});
